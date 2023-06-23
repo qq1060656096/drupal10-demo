@@ -1,0 +1,121 @@
+<?php
+/**
+ * @file
+ * Install and uninstall functions for the your_module module.
+ */
+
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+/**
+ * Implements hook_install().
+ */
+function hello2023_install() {
+  // Perform module installation tasks here.
+  create_table();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function hello2023_uninstall() {
+  // Perform module uninstallation tasks here.
+  drop_table();
+}
+
+/**
+ * Helper function to create the database table.
+ */
+function create_table() {
+  $connection = \Drupal::database();
+  $schema = $connection->schema();
+  $table_name = 'biz_demo';
+  if (!$schema->tableExists($table_name)) {
+    $table = [
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'not null' => TRUE,
+          'unsigned' => TRUE,
+          'description' => 'The primary identifier for a record.',
+        ],
+        'name' => [
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '',
+          'description' => 'name',
+        ],
+        'age' => [
+          'type' => 'int',
+          'length' => 255,
+          'not null' => TRUE,
+          'default' => '0',
+          'description' => 'age',
+        ],
+        // Add more fields as needed.
+      ],
+      'primary key' => ['id'],
+    ];
+    $schema->createTable($table_name, $table);
+  }
+
+  // Insert data into the 'biz_demo' table.
+  $connection = \Drupal::database();
+
+  // Define the data to be inserted.
+  $data = [
+    ['id' => 1, 'name' => 'test1', 'age' => 10],
+    ['id' => 2, 'name' => 'test2', 'age' => 20],
+    ['id' => 3, 'name' => 'test3', 'age' => 30],
+    ['id' => 4, 'name' => 'test4', 'age' => 22],
+    ['id' => 5, 'name' => 'test5', 'age' => 50],
+    ['id' => 6, 'name' => 'test6', 'age' => 66],
+    ['id' => 7, 'name' => 'test7', 'age' => 7],
+    ['id' => 8, 'name' => 'test8', 'age' => 80],
+    ['id' => 9, 'name' => 'test9', 'age' => 9],
+    ['id' => 10, 'name' => 'test10', 'age' => 10],
+    ['id' => 11, 'name' => 'test11', 'age' => 110],
+    ['id' => 12, 'name' => 'test12', 'age' => 120],
+  ];
+
+  // Insert the data into the table.
+  foreach ($data as $item) {
+    $connection->insert('biz_demo')
+      ->fields($item)
+      ->execute();
+  }
+}
+
+/**
+ * Helper function to drop the database table.
+ */
+function drop_table() {
+  $connection = \Drupal::database();
+  $schema = $connection->schema();
+  $table_name = 'biz_demo';
+  if ($schema->tableExists($table_name)) {
+    $schema->dropTable($table_name);
+  }
+}
+
+
+/**
+ * 访问{baseUrl}/update.php url更新数据库
+ *
+ * Implements hook_update_N().
+ *
+ */
+function hello2023_update_100120230623() {
+  // Perform update tasks here.
+  $connection = \Drupal::database();
+  $schema = $connection->schema();
+  $table_name = 'biz_demo';
+  $field_definition = [
+    'type' => 'varchar',
+    'length' => 255,
+    'not null' => TRUE,
+    'default' => 'default address',
+    'description' => 'address',
+  ];
+  $schema->addField($table_name, 'address', $field_definition);
+}

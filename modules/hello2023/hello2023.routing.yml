@@ -1,0 +1,71 @@
+hello2023.page.hello:
+  path: '/hello2023/page/hello'
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\PageController::hello'
+    _title: 'Hello'
+  requirements:
+    _permission: 'access content'
+hello2023.page.html:
+  path: "/hello2023/page/html"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\PageController::html'
+    _title: 'HTML'
+  requirements:
+    _permission: 'access content'
+hello2023.page.form:
+  path: "/hello2023/page/form"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\PageController::form'
+    _title: 'Form'
+  requirements:
+    _permission: 'access content'
+hello2023.page.satic.table.page:
+  path: "/hello2023/page/table"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\PageController::table'
+    _title: 'Table'
+  requirements:
+    _permission: 'access content'
+hello2023.page.dbPager:
+  path: "/hello2023/page/db-table"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\PageController::dbTable'
+    _title: 'DB Table'
+  requirements:
+    _permission: 'access content'
+
+hello2023.json.hello:
+  path: "/hello2023/json/hello"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\JsonController::hello'
+    _title: 'json hello'
+  requirements:
+    _permission: 'access content'
+hello2023.json.dbTable:
+  path: "/hello2023/json/db-table"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\JsonController::dbTable'
+    _title: 'json hello'
+  requirements:
+    _permission: 'access content'
+
+hello2023.router.hello:
+  path: "/hello2023/router/hello/{name}"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\RouterController::hello'
+    _title: 'router hello must have name parameter'
+  requirements:
+    _permission: 'access content'
+hello2023.router.hello2:
+  path: "/hello2023/router/hello2/{name}"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\RouterController::hello2'
+    _title: 'router hello2 name parameter default value'
+    name: 'default name value 1'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      name:
+        type: 'string'
+        optional: true

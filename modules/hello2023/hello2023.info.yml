@@ -1,0 +1,6 @@
+name: hello2023
+description: hello2023 module
+package: custom
+type: module
+version: 0.0.1
+core_version_requirement: ">=8"
