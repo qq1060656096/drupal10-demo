@@ -1,3 +1,8 @@
+hello2023.admin:
+  path: '/hello2023/admin'
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\AdminController::index'
+    _title: 'Hello Admin Links'
 hello2023.page.hello:
   path: '/hello2023/page/hello'
   defaults:
