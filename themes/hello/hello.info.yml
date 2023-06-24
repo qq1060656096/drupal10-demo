@@ -1,0 +1,6 @@
+name: 'Hello Theme'
+type: theme
+description: 'Custom theme for Drupal 10'
+package: Custom
+core_version_requirement: ^10 || ^11
+base theme: olivero
