@@ -3,6 +3,8 @@ hello2023.admin:
   defaults:
     _controller: '\Drupal\hello2023\Controller\AdminController::index'
     _title: 'Hello Admin Links'
+  requirements:
+    _permission: 'access content'
 hello2023.page.hello:
   path: '/hello2023/page/hello'
   defaults:
@@ -24,14 +26,14 @@ hello2023.page.form:
     _title: 'Form'
   requirements:
     _permission: 'access content'
-hello2023.page.satic.table.page:
+hello2023.page.table:
   path: "/hello2023/page/table"
   defaults:
     _controller: '\Drupal\hello2023\Controller\PageController::table'
     _title: 'Table'
   requirements:
     _permission: 'access content'
-hello2023.page.dbPager:
+hello2023.page.dbTable:
   path: "/hello2023/page/db-table"
   defaults:
     _controller: '\Drupal\hello2023\Controller\PageController::dbTable'
