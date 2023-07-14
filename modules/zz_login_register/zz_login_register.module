@@ -1,0 +1,48 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_menu().
+ */
+function zz_login_register_menu() {
+  $items['user/register'] = [
+    'title' => '用户注册',
+    'route_name' => 'zz_login_register.register',
+    'weight' => 0,
+  ];
+
+  $items['user/login'] = [
+    'title' => '用户登录',
+    'route_name' => 'zz_login_register.login',
+    'weight' => 1,
+  ];
+
+  return $items;
+}
+
+/**
+ * Implements hook_help().
+ */
+function zz_login_register_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.zz_login_register':
+      return '<p>' . t('ZZ Login Register help') . '</p>';
+  }
+}
+
+/**
+ * Route callback: 用户注册页面.
+ */
+function zz_login_register_register_page() {
+  $form = \Drupal::formBuilder()->getForm('Drupal\zz_login_register\Form\ZZLoginRegisterForm');
+  return $form;
+}
+
+/**
+ * Route callback: 用户登录页面.
+ */
+function zz_login_register_login_page() {
+  $form = \Drupal::formBuilder()->getForm('Drupal\zz_login_register\Form\ZZLoginLoginForm');
+  return $form;
+}
