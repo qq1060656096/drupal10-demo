@@ -74,3 +74,27 @@ yoursite.com/jsonapi/node/article/{节点ID}
 11. 根据语言参数切换获取不同语言内容。
 
 利用JSON API获取多语言内容,可以轻松实现Drupal站点的国际化。
+
+
+```text
+在 Drupal 10 中，你可以使用 JSON:API 模块来支持多语言的 API 接口。以下是配置 JSON:API 模块以支持多语言的步骤：
+
+确保启用了 JSON:API 模块：在 Drupal 的模块管理中，确保已经安装并启用了 JSON:API 模块。如果没有安装，请在 Drupal 的模块库中搜索并安装该模块。
+
+配置多语言设置：进入网站的管理区域，导航至“Configuration” > “Regional and language” > “Languages” 页面。在这里，你可以启用和配置支持的语言。
+
+配置 JSON:API 请求的多语言支持：
+
+进入网站的管理区域，导航至“Configuration” > “Web services” > “JSON:API” 页面。
+在“JSON:API language negotiation”部分，选择“Path prefix”选项，这样请求 URL 中可以包含语言前缀（例如：/en/jsonapi/node）。
+在“JSON:API resources”部分，选择你想要启用多语言支持的资源类型，并勾选“Enable entity translation”选项。
+配置内容类型的翻译：
+
+进入要进行翻译的内容类型的编辑页面。
+在“Manage fields”选项卡下，找到需要翻译的字段，并勾选“Enable translation”选项。对于多语言字段（如文本、文本域等），你还可以选择“Translate”或“Custom language”选项。
+清除缓存：在 Drupal 的管理区域，导航至“Configuration” > “Development” > “Performance” 页面，点击“Clear all caches”按钮以清除缓存，确保配置生效。
+
+经过以上步骤的配置后，你就可以在 JSON:API 中通过访问对应语言的 URL 来获取多语言支持的内容。
+
+希望这些信息能够帮助到你！如果你还有其他问题，请随时提问。
+```
