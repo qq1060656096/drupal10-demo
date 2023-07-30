@@ -1,0 +1,7 @@
+zz100.config.default:
+  path: '/zz100/config/default'
+  defaults:
+    _controller: '\Drupal\zz100\Controller\Zz100ConfigController::getDefaultConfig'
+    _title: 'Hello Admin Links'
+  requirements:
+    _permission: 'access content'

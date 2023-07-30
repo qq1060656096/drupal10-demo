@@ -76,3 +76,11 @@ hello2023.router.hello2:
       name:
         type: 'string'
         optional: true
+hello2023.module.sms.send:
+  path: "/hello2023/module/sms/send"
+  defaults:
+    _controller: '\Drupal\hello2023\Controller\SmsController::send'
+    _title: 'router hello2 name parameter default value'
+    name: 'sms send'
+  requirements:
+    _permission: 'access content'

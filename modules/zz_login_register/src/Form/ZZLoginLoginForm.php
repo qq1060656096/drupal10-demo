@@ -53,14 +53,15 @@ class ZZLoginLoginForm extends FormBase {
     $uid = user_authenticate($username, $password);
 
     if ($uid) {
+      drupal_set_message('[zz_login]登录成功！');exit;
       // 登录成功
       user_login_finalize($uid);
-      drupal_set_message('登录成功！');
+      drupal_set_message('[zz_login2]登录成功！');
     }
     else {
       // 登录失败
-      \Drupal::logger('zz_login_register')->error('登录失败，用户名或密码错误。');
-      drupal_set_message('登录失败，用户名或密码错误。', 'error');
+      \Drupal::logger('zz_login_register')->error('[zz_login3]登录失败，用户名或密码错误。');
+      drupal_set_message('[zz_login4]登录失败，用户名或密码错误。', 'error');
     }
   }
 }

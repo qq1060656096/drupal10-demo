@@ -62,6 +62,12 @@ class AdminController extends ControllerBase
         'desc' => 'router hello2 Desc',
         'route_name' => 'hello2023.router.hello2',
       ],
+
+      [
+        'name' => 'module sms',
+        'desc' => 'module sms Desc',
+        'route_name' => 'hello2023.module.sms.send',
+      ],
     ];
     $rows = [];
     foreach ($list as $row) {
