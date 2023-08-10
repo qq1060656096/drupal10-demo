@@ -1,0 +1,6 @@
+name: zzbiz 101
+description: zzbiz module 101
+package: zzbiz
+type: module
+version: 0.0.1
+core_version_requirement: ">=8"

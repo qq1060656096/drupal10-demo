@@ -1,0 +1,12 @@
+<?php
+
+
+/**
+ * Implements hook_hello_say().
+ */
+function zz100_hello_say() {
+  return [
+    '#markup' => 'Hello World!',
+    'zz100_hello_say' => 'zz100.module',
+  ];
+}

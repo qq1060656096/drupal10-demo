@@ -1,0 +1,7 @@
+<?php
+function zz101_hello_say() {
+  return [
+    '#markup' => 'Hello World! 101.2',
+    'zz101_hello_say' => 'zz101.module',
+  ];
+}

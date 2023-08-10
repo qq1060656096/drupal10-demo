@@ -5,3 +5,10 @@ zz100.config.default:
     _title: 'Hello Admin Links'
   requirements:
     _permission: 'access content'
+zz100.hook.runHook:
+  path: '/zz100/hook/runHook'
+  defaults:
+    _controller: '\Drupal\zz100\Controller\Zz100HookController::runHook'
+    _title: 'Hello Admin Links'
+  requirements:
+    _permission: 'access content'
