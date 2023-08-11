@@ -5,3 +5,46 @@ function zz101_hello_say() {
     'zz101_hello_say' => 'zz101.module',
   ];
 }
+
+
+function zz101_form_alter(&$form, $form_state, $form_id) {
+
+  if ($form_id === 'user_register_form') {
+    $form['account_type'] = [
+      '#type' => 'select',
+      '#title' => t('Account Type'),
+      '#options' => [
+        'mobile' => t('Mobile'),
+        'email' => t('Email'),
+        'accounts' => t('Accounts'),
+      ],
+      '#required' => TRUE,
+    ];
+    $form['#validate'][] = 'zz101_user_register_form_validate';
+    $form['actions']['submit']['#submit'] = ['zz101_user_register_form_submit'];
+  }
+
+}
+
+
+/**
+ * Custom form validation callback for user registration form.
+ */
+function zz101_user_register_form_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // Perform your custom validation logic here.
+  // Example: Check if the username contains "admin".
+  $username = $form_state->getValue('name');
+  if (strpos($username, 'admin') !== false) {
+    $form_state->setErrorByName('name', t('Username cannot contain "admin". Please choose a different username.'));
+  }
+}
+
+
+/**
+ * Custom form submission callback for user registration form.
+ */
+function zz101_user_register_form_submit(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // Perform your custom submission logic here.
+  // Example: Display a thank you message after submitting the form.
+  var_dump(123);exit;
+}
