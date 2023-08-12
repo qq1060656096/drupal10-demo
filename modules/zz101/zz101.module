@@ -24,6 +24,38 @@ function zz101_form_alter(&$form, $form_state, $form_id) {
     $form['actions']['submit']['#submit'] = ['zz101_user_register_form_submit'];
   }
 
+  if ($form_id === 'user_login_form') {
+    $form['name'] = [
+      '#type' => 'textfield',
+      '#title' => t('Username 111'),
+      '#size' => 60,
+      '#maxlength' => \Drupal\user\UserInterface::USERNAME_MAX_LENGTH,
+      '#description' => t('Enter your @s username.', ['@s' => 'hhh']),
+      '#required' => TRUE,
+      '#attributes' => [
+        'autocorrect' => 'none',
+        'autocapitalize' => 'none',
+        'spellcheck' => 'false',
+        'autofocus' => 'autofocus',
+      ],
+    ];
+
+    $form['pass'] = [
+      '#type' => 'password',
+      '#title' => t('Password'),
+      '#size' => 60,
+      '#description' => t('Enter the password that accompanies your username.'),
+      '#required' => TRUE,
+    ];
+
+    $form['actions'] = ['#type' => 'actions'];
+    $form['actions']['submit'] = ['#type' => 'submit', '#value' => t('Log in')];
+
+    $form['#validate'] = ['zz101_user_login_form_validate'];
+    // 将提交按钮的回调函数更改为自定义的回调函数。
+    $form['#submit'] = ['zz101_user_login_submit'];
+  }
+
 }
 
 
@@ -47,4 +79,27 @@ function zz101_user_register_form_submit(&$form, \Drupal\Core\Form\FormStateInte
   // Perform your custom submission logic here.
   // Example: Display a thank you message after submitting the form.
   var_dump(123);exit;
+}
+
+
+/**
+ * Custom form validation callback for user login form.
+ */
+function zz101_user_login_form_validate(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // Perform your custom validation logic here.
+  // Example: Check if the username contains "admin".
+  $username = $form_state->getValue('name');
+  if (strpos($username, 'zsg') !== false) {
+    $form_state->setErrorByName('name', t('Username cannot contain "zsg". Please choose a different username.'));
+  }
+}
+
+/**
+ * Custom login form submission handler.
+ */
+function zz101_user_login_submit($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  // 在这里编写自定义的提交逻辑。
+  // 例如，您可以执行额外的验证、登录处理或其他操作。
+  // ...
+  var_dump(  $username = $form_state->getValue('name'));exit;
 }
